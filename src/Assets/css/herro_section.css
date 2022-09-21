@@ -1,0 +1,19 @@
+.heroSection{
+    height: 400px;
+}
+.heroTitle{
+    font-weight: bold;
+    color: gray;
+    font-size: 13px;
+}
+
+.heroGreetingTitle{
+    font-weight: bold;
+    font-style: italic;
+    color: orangered;
+}
+
+.heroGreetingDes{
+    font-weight: bold;
+    font-style: italic;
+}
