@@ -10,7 +10,7 @@ const BASE_URL = "http://127.0.0.1:8000";
 
 export function userRegistrationAPI(first_name, last_name, github_username, email_address, phone_number, user_password, profile_img) {
     store.dispatch(showLoader())
-    let url = BASE_URL+"/registerUser";
+    let url = BASE_URL+"/account/register";
     let bodyData = {
         firstName: first_name,
         lastName: last_name,
