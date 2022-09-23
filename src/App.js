@@ -10,6 +10,7 @@ import LoaderHelper from "./Helpers/LoaderHelper";
 import ContactPage from "./Pages/Contact/ContactPage";
 import {getToken} from "./Helpers/SessionHelper";
 import SidebarSection from "./Components/Common/SidebarSection";
+import ProjectDetailPage from "./Pages/Project/ProjectDetailPage";
 
 function App() {
     if (getToken()){
@@ -19,6 +20,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/project" element={<ProjectPage/>}/>
+                        <Route path="/project/detail/:id" element={<ProjectDetailPage/>}/>
                         <Route path="/tutorial" element={<TutorialPage/>}/>
                         <Route path="/about" element={<AboutPage/>}/>
                         <Route path="/contact" element={<ContactPage/>}/>

@@ -13,6 +13,13 @@ const RegisterPage = ()=>{
             <RegisterSection/>
             <br/>
             <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <FooterSection/>
         </Fragment>
     );
