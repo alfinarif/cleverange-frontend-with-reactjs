@@ -1,12 +1,13 @@
 import React, {Fragment, useState, useEffect} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {errorToast} from "../../Helpers/NotificationHelper";
 
 
-const ProjectListComponent = ()=>{
 
-    let [projectList, setProject] = useState([])
+const ProjectListComponent = ()=>{
+    let navigate = useNavigate();
+    let [projectList, setProject] = useState([]);
 
     useEffect(()=>{
         let url = 'http://127.0.0.1:8000/project/list/active'
@@ -23,7 +24,7 @@ const ProjectListComponent = ()=>{
 
 
     const projectDetail =(id)=>{
-        window.location = '/project/detail/'+id
+        navigate('/project/detail/'+id);
     }
 
 
@@ -44,20 +45,10 @@ const ProjectListComponent = ()=>{
                                     <div className="card w-100 m-2">
                                         <div className="card-body">
                                             <Link to=""><h5 className="card-title">{project.title}</h5></Link>
-                                            <span className="badge bg-secondary">{project['category'].title}</span>
                                             <p className="card-text">{project.sort_des}</p>
 
-                                            {
-                                                project['stack'].map((tech, index)=>{
-                                                    return(
-                                                        <span className="badge bg-secondary mx-1">{tech.title}</span>
-                                                    )
-                                                })
-                                            }
-                                            <br/>
-                                            <br/>
-                                            <button onClick={projectDetail.bind(this, project.id)} className="btn btn-primary btn-sm mx-2">Details</button>
-                                            <a href={project.github_url} className="btn btn-danger btn-sm">GitHub</a>
+                                            <button onClick={projectDetail.bind(this, project.id)} className="btn btn-primary btn-sm">Details</button>
+                                            <a href={project.github_url} className="btn btn-danger btn-sm ml-1">GitHub</a>
                                         </div>
                                     </div>
                                 )

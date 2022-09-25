@@ -1,17 +1,17 @@
 import {React, Fragment} from 'react';
 import FooterSection from '../../Components/Common/FooterSection';
 import NavigationBar from '../../Components/Common/NavigationBar';
-import FreeTutorialDetails from '../../Components/Tutorial/FreeTutorialDetails';
+import TopicListComponent from "../../Components/Tutorial/TopicListComponent";
 
 
-const TutorialPage = ()=>{
+const TopicListPage = ()=>{
     return(
         <Fragment>
             <NavigationBar/>
             <br/>
             <br/>
             <br/>
-            <FreeTutorialDetails/>
+            <TopicListComponent/>
             <br/>
             <br/>
             <br/>
@@ -22,4 +22,4 @@ const TutorialPage = ()=>{
     );
 }
 
-export default TutorialPage;
+export default TopicListPage;

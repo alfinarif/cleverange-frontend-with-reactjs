@@ -11,6 +11,7 @@ import ContactPage from "./Pages/Contact/ContactPage";
 import {getToken} from "./Helpers/SessionHelper";
 import SidebarSection from "./Components/Common/SidebarSection";
 import ProjectDetailPage from "./Pages/Project/ProjectDetailPage";
+import TopicListPage from "./Pages/Tutorial/TopicListPage";
 
 function App() {
     if (getToken()){
@@ -22,6 +23,7 @@ function App() {
                         <Route path="/project" element={<ProjectPage/>}/>
                         <Route path="/project/detail/:id" element={<ProjectDetailPage/>}/>
                         <Route path="/tutorial" element={<TutorialPage/>}/>
+                        <Route path="/tutorial/:id" element={<TopicListPage/>}/>
                         <Route path="/about" element={<AboutPage/>}/>
                         <Route path="/contact" element={<ContactPage/>}/>
 
