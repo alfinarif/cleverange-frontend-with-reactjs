@@ -11,7 +11,7 @@ const ProjectDetailComponent = ()=>{
     const [stack, setStack] = useState([]);
 
     useEffect(()=>{
-        let url = "http://127.0.0.1:8000/project/list/detail/"+params.id;
+        let url = "http://127.0.0.1:8000/project/list/"+params.slug;
         axios.get(url)
             .then((res)=>{
                 setProjectDetail(res.data)

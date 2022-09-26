@@ -21,9 +21,9 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/project" element={<ProjectPage/>}/>
-                        <Route path="/project/detail/:id" element={<ProjectDetailPage/>}/>
+                        <Route path="/project/:slug" element={<ProjectDetailPage/>}/>
                         <Route path="/tutorial" element={<TutorialPage/>}/>
-                        <Route path="/tutorial/:id" element={<TopicListPage/>}/>
+                        <Route path="/tutorial/:slug" element={<TutorialPage/>}/>
                         <Route path="/about" element={<AboutPage/>}/>
                         <Route path="/contact" element={<ContactPage/>}/>
 

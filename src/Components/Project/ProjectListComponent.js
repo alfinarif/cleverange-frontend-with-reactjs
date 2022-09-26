@@ -23,8 +23,8 @@ const ProjectListComponent = ()=>{
     },[])
 
 
-    const projectDetail =(id)=>{
-        navigate('/project/detail/'+id);
+    const projectDetail =(slug)=>{
+        navigate('/project/'+slug);
     }
 
 
@@ -47,7 +47,7 @@ const ProjectListComponent = ()=>{
                                             <Link to=""><h5 className="card-title">{project.title}</h5></Link>
                                             <p className="card-text">{project.sort_des}</p>
 
-                                            <button onClick={projectDetail.bind(this, project.id)} className="btn btn-primary btn-sm">Details</button>
+                                            <button onClick={projectDetail.bind(this, project.slug)} className="btn btn-primary btn-sm">Details</button>
                                             <a href={project.github_url} className="btn btn-danger btn-sm ml-1">GitHub</a>
                                         </div>
                                     </div>

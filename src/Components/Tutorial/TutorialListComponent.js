@@ -22,8 +22,8 @@ const TutorialListComponent = ()=>{
     },[])
 
 
-    const tutorialDetail = (id)=>{
-        navigate('/tutorial/'+id)
+    const tutorialDetail = (slug)=>{
+        navigate('/tutorial/'+slug)
     }
 
     if(courses.length >0){
@@ -48,7 +48,7 @@ const TutorialListComponent = ()=>{
                                                 <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
                                                 <span className="mb-2">{course.created}</span><br/>
-                                                <button onClick={tutorialDetail.bind(this, course.id)} className="btn btn-primary btn-sm">Start</button>
+                                                <button onClick={tutorialDetail.bind(this, course.slug)} className="btn btn-primary btn-sm">Start</button>
                                                 <a href="#" className="btn btn-danger btn-sm ml-1">From YouTube</a>
                                             </div>
                                         </div>

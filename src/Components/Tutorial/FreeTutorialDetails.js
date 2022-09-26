@@ -1,8 +1,31 @@
-import {React, Fragment} from 'react';
-import { Link } from 'react-router-dom';
+import React,{Fragment, useState, useEffect} from 'react';
+import { Link, useParams } from 'react-router-dom';
 import ReactPlayer from "react-player";
+import axios from "axios";
+import {errorToast} from "../../Helpers/NotificationHelper";
 
 const FreeTutorialDetails = ()=>{
+    let params = useParams();
+    let [tutorials, setTutorials] = useState([]);
+    let [courseTitle, setCourseTitle] = useState([]);
+
+    useEffect(()=>{
+        let url = "http://127.0.0.1:8000/course/list/tutorial/"+params.slug
+        axios.get(url)
+            .then((res)=>{
+                setTutorials(res.data)
+                setCourseTitle(res.data[0]['course'])
+                console.log(res.data[0]['course'])
+            })
+            .catch((err)=>{
+                if(err){
+                    errorToast("Can not load data..!")
+                }
+            })
+
+    },[])
+
+
     return(
         <Fragment>
             <div className="container-fluid mt-3">
@@ -24,37 +47,22 @@ const FreeTutorialDetails = ()=>{
                             <table className="table border">
                                 <thead className="table-header bg-success">
                                 <tr>
-                                    <th className="text-white">Django Free Playlist</th>
+                                    <th className="text-white">{courseTitle.title}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1 - Introduction to django</td>
-                                </tr>
-                                <tr>
-                                    <td>2 - Creating virtualenv for django</td>
-                                </tr>
-                                <tr>
-                                    <td>3 - Install initial modules</td>
-                                </tr>
-                                <tr>
-                                    <td>3 - Install initial modules</td>
-                                </tr>
-                                <tr>
-                                    <td>3 - Install initial modules</td>
-                                </tr>
-                                <tr>
-                                    <td>3 - Install initial modules</td>
-                                </tr>
-                                <tr>
-                                    <td>3 - Install initial modules</td>
-                                </tr>
-                                <tr>
-                                    <td>3 - Install initial modules</td>
-                                </tr>
-                                <tr>
-                                    <td>3 - Install initial modules</td>
-                                </tr>
+
+                                {
+                                    tutorials.map((tutorial, index)=>{
+                                        return(
+                                            <tr>
+                                                <td>{index} - {tutorial.title}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+
+
 
                                 </tbody>
                             </table>
