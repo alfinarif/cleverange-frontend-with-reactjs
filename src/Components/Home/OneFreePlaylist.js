@@ -1,8 +1,37 @@
 import {React, Fragment} from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import ReactPlayer from 'react-player';
+import {useEffect, useState} from "@types/react";
+import axios from "axios";
+import {errorToast} from "../../Helpers/NotificationHelper";
 
 const OneFreePlaylist = ()=>{
+    let params = useParams();
+    let [tutorials, setTutorials] = useState([]);
+    let [courseTitle, setCourseTitle] = useState([]);
+    let [vUrl, setUrl] = useState("");
+
+    useEffect(()=>{
+        let url = "http://127.0.0.1:8000/course/list/tutorial/free";
+        axios.get(url)
+            .then((res)=>{
+                setTutorials(res.data)
+                setCourseTitle(res.data[0]['course'])
+                console.log(res.data[0]['course'])
+            })
+            .catch((err)=>{
+                if(err){
+                    errorToast("Can not load data..!")
+                }
+            })
+
+    },[]);
+
+
+    const setVideoUrl = (url)=>{
+        setUrl(url)
+    }
+
 
     return(
         <Fragment>
@@ -11,55 +40,43 @@ const OneFreePlaylist = ()=>{
                     <div className="col-lg-6 col-md-6 col-sm-12 my-1" style={{height:"409", width:"309"}}>
                         <div className="player-wrapper">
                             <ReactPlayer
-                                url="https://www.youtube.com/watch?v=-X4ikwUwxoE"
+                                url={vUrl}
                                 className="react-player"
                                 playing
                                 width="100%"
                                 height="100%"
                                 controls={false}
+                                pip ={false}
                             />
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-12 my-1">
-                    <div style={{height:"380px", overflow:"auto"}}>
-                        <table className="table border">
-                        <thead className="table-header bg-success">
-                            <tr>
-                            <th className="text-white">Django Free Playlist</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1 - Introduction to django</td>
-                            </tr>
-                            <tr>
-                                <td>2 - Creating virtualenv for django</td>
-                            </tr>
-                            <tr>
-                                <td>3 - Install initial modules</td>
-                            </tr>
-                            <tr>
-                                <td>3 - Install initial modules</td>
-                            </tr>
-                            <tr>
-                                <td>3 - Install initial modules</td>
-                            </tr>
-                            <tr>
-                                <td>3 - Install initial modules</td>
-                            </tr>
-                            <tr>
-                                <td>3 - Install initial modules</td>
-                            </tr>
-                            <tr>
-                                <td>3 - Install initial modules</td>
-                            </tr>
-                            <tr>
-                                <td>3 - Install initial modules</td>
-                            </tr>
-                            
-                        </tbody>
-                        </table>
-                    </div>
+                        <div style={{height:"380px", overflow:"auto"}}>
+                            <table className="table border">
+                                <thead className="table-header bg-success">
+                                <tr>
+                                    <th className="text-white">{courseTitle.title}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {
+                                    tutorials.map((tutorial, index)=>{
+                                        return(
+
+                                            <tr className="plylistTitleStyle" onClick={setVideoUrl.bind(this, tutorial.url)}>
+                                                <td>{index} - {tutorial.title}</td>
+                                            </tr>
+
+                                        )
+                                    })
+                                }
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                 </div>

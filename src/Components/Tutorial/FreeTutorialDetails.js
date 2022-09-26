@@ -8,6 +8,7 @@ const FreeTutorialDetails = ()=>{
     let params = useParams();
     let [tutorials, setTutorials] = useState([]);
     let [courseTitle, setCourseTitle] = useState([]);
+    let [vUrl, setUrl] = useState("");
 
     useEffect(()=>{
         let url = "http://127.0.0.1:8000/course/list/tutorial/"+params.slug
@@ -23,7 +24,12 @@ const FreeTutorialDetails = ()=>{
                 }
             })
 
-    },[])
+    },[]);
+
+
+    const setVideoUrl = (url)=>{
+        setUrl(url)
+    }
 
 
     return(
@@ -33,12 +39,13 @@ const FreeTutorialDetails = ()=>{
                     <div className="col-lg-6 col-md-6 col-sm-12 my-1" style={{height:"409", width:"309"}}>
                         <div className="player-wrapper">
                             <ReactPlayer
-                                url="https://www.youtube.com/watch?v=-X4ikwUwxoE"
+                                url={vUrl}
                                 className="react-player"
                                 playing
                                 width="100%"
                                 height="100%"
                                 controls={false}
+                                pip ={false}
                             />
                         </div>
                     </div>
@@ -55,9 +62,11 @@ const FreeTutorialDetails = ()=>{
                                 {
                                     tutorials.map((tutorial, index)=>{
                                         return(
-                                            <tr>
+
+                                            <tr className="plylistTitleStyle" onClick={setVideoUrl.bind(this, tutorial.url)}>
                                                 <td>{index} - {tutorial.title}</td>
                                             </tr>
+
                                         )
                                     })
                                 }
