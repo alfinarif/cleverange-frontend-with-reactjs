@@ -9,9 +9,8 @@ import AboutPage from "./Pages/About/AboutPage";
 import LoaderHelper from "./Helpers/LoaderHelper";
 import ContactPage from "./Pages/Contact/ContactPage";
 import {getToken} from "./Helpers/SessionHelper";
-import SidebarSection from "./Components/Common/SidebarSection";
 import ProjectDetailPage from "./Pages/Project/ProjectDetailPage";
-import TopicListPage from "./Pages/Tutorial/TopicListPage";
+import ProfilePage from "./Pages/Profile/ProfilePage";
 
 function App() {
     if (getToken()){
@@ -26,6 +25,7 @@ function App() {
                         <Route path="/tutorial/:slug" element={<TutorialPage/>}/>
                         <Route path="/about" element={<AboutPage/>}/>
                         <Route path="/contact" element={<ContactPage/>}/>
+                        <Route path="/profile" element={<ProfilePage/>}/>
 
                         {/* undefined router */}
                         <Route

@@ -1,18 +1,16 @@
-import {React, Fragment} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import React,{Fragment, useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import ReactPlayer from 'react-player';
-import {useEffect, useState} from "@types/react";
 import axios from "axios";
 import {errorToast} from "../../Helpers/NotificationHelper";
 
 const OneFreePlaylist = ()=>{
-    let params = useParams();
     let [tutorials, setTutorials] = useState([]);
     let [courseTitle, setCourseTitle] = useState([]);
-    let [vUrl, setUrl] = useState("");
+    let [vUrl, setUrl] = useState("https://youtu.be/nhgy3IDqZZk");
 
     useEffect(()=>{
-        let url = "http://127.0.0.1:8000/course/list/tutorial/free";
+        let url = "http://127.0.0.1:8000/course/list/index/free";
         axios.get(url)
             .then((res)=>{
                 setTutorials(res.data)

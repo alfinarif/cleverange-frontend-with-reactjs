@@ -49,13 +49,14 @@ const NavigationBar = ()=>{
 
 
                                         <li className="nav-item dropdown rounded">
-                                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                            <a className="text-white nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                                role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
                                                 className="bi bi-person-fill me-2"></i>Profile</a>
                                             <ul className="dropdown-menu dropdown-menu-end"
                                                 aria-labelledby="navbarDropdown">
-                                                <li><a className="dropdown-item" href="#">Account</a></li>
-                                                <li><a className="dropdown-item" href="#">Another action</a></li>
+
+                                                <Link to="/profile"><li><a className="dropdown-item" href="#">Settings</a></li></Link>
+
                                                 <li>
                                                     <hr className="dropdown-divider"/>
                                                 </li>

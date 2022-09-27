@@ -8,7 +8,7 @@ const FreeTutorialDetails = ()=>{
     let params = useParams();
     let [tutorials, setTutorials] = useState([]);
     let [courseTitle, setCourseTitle] = useState([]);
-    let [vUrl, setUrl] = useState("");
+    let [vUrl, setUrl] = useState("https://youtu.be/nhgy3IDqZZk");
 
     useEffect(()=>{
         let url = "http://127.0.0.1:8000/course/list/tutorial/"+params.slug
