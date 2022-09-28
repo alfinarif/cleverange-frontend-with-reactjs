@@ -8,11 +8,7 @@ const ProfilePage = ()=>{
     return(
         <Fragment>
             <NavigationBar/>
-            <br/>
-            <br/>
-            <br/>
             <ProfileComponent/>
-            <br/>
             <br/>
             <br/>
             <br/>

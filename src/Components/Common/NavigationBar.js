@@ -1,9 +1,18 @@
 import React,{Fragment} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import logo from '../../Assets/img/cleverange.png';
 import {getToken} from "../../Helpers/SessionHelper";
 
 const NavigationBar = ()=>{
+    let navigate = useNavigate();
+    const logoutUser = ()=>{
+        localStorage.removeItem('token')
+        localStorage.removeItem('userDetails')
+        navigate('/loginUser')
+    }
+
+
+
     if(getToken()){
         return(
             <Fragment>
@@ -60,7 +69,7 @@ const NavigationBar = ()=>{
                                                 <li>
                                                     <hr className="dropdown-divider"/>
                                                 </li>
-                                                <li><a className="dropdown-item" href="#">Logout</a></li>
+                                                <li><a className="dropdown-item" style={{'cursor': 'pointer'}} onClick={logoutUser}>Logout</a></li>
                                             </ul>
                                         </li>
 

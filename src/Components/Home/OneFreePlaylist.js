@@ -19,7 +19,7 @@ const OneFreePlaylist = ()=>{
             })
             .catch((err)=>{
                 if(err){
-                    errorToast("Can not load data..!")
+                    errorToast("Free django playlist is not active yet..!")
                 }
             })
 
