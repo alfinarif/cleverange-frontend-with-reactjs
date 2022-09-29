@@ -5,10 +5,11 @@ import {getToken} from "../../Helpers/SessionHelper";
 
 const NavigationBar = ()=>{
     let navigate = useNavigate();
+
     const logoutUser = ()=>{
         localStorage.removeItem('token')
         localStorage.removeItem('userDetails')
-        navigate('/loginUser')
+        window.location = '/loginUser'
     }
 
 
@@ -37,24 +38,25 @@ const NavigationBar = ()=>{
                                                 className="bi bi-house-fill me-2"></i>Home</span>
                                             </li>
                                         </Link>
-                                        <Link to="/project">
-                                            <li className="nav-item rounded">
-                                            <span className="nav-link active" aria-current="page"><i
-                                                className="bi bi-house-fill me-2"></i>Projects</span>
-                                            </li>
-                                        </Link>
-                                        <Link to="/about">
-                                            <li className="nav-item rounded">
-                                            <span className="nav-link active" aria-current="page"><i
-                                                className="bi bi-house-fill me-2"></i>About</span>
-                                            </li>
-                                        </Link>
-                                        <Link to="/contact">
-                                            <li className="nav-item rounded">
-                                            <span className="nav-link active" aria-current="page"><i
-                                                className="bi bi-house-fill me-2"></i>Contact</span>
-                                            </li>
-                                        </Link>
+
+                                        {/*<Link to="/project">*/}
+                                        {/*    <li className="nav-item rounded">*/}
+                                        {/*    <span className="nav-link active" aria-current="page"><i*/}
+                                        {/*        className="bi bi-house-fill me-2"></i>Projects</span>*/}
+                                        {/*    </li>*/}
+                                        {/*</Link>*/}
+                                        {/*<Link to="/about">*/}
+                                        {/*    <li className="nav-item rounded">*/}
+                                        {/*    <span className="nav-link active" aria-current="page"><i*/}
+                                        {/*        className="bi bi-house-fill me-2"></i>About</span>*/}
+                                        {/*    </li>*/}
+                                        {/*</Link>*/}
+                                        {/*<Link to="/contact">*/}
+                                        {/*    <li className="nav-item rounded">*/}
+                                        {/*    <span className="nav-link active" aria-current="page"><i*/}
+                                        {/*        className="bi bi-house-fill me-2"></i>Contact</span>*/}
+                                        {/*    </li>*/}
+                                        {/*</Link>*/}
 
 
                                         <li className="nav-item dropdown rounded">

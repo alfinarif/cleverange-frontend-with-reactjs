@@ -19,12 +19,16 @@ function App() {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
-                        <Route path="/project" element={<ProjectPage/>}/>
+
+                        {/*<Route path="/project" element={<ProjectPage/>}/>*/}
+
                         <Route path="/project/:slug" element={<ProjectDetailPage/>}/>
                         <Route path="/tutorial" element={<TutorialPage/>}/>
                         <Route path="/tutorial/:slug" element={<TutorialPage/>}/>
-                        <Route path="/about" element={<AboutPage/>}/>
-                        <Route path="/contact" element={<ContactPage/>}/>
+
+                        {/*<Route path="/about" element={<AboutPage/>}/>*/}
+                        {/*<Route path="/contact" element={<ContactPage/>}/>*/}
+
                         <Route path="/profile" element={<ProfilePage/>}/>
 
                         {/* undefined router */}
@@ -53,8 +57,10 @@ function App() {
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/project" element={<Navigate to="/loginUser" replace />}/>
                         <Route path="/tutorial" element={<Navigate to="/loginUser" replace />}/>
-                        <Route path="/about" element={<AboutPage/>}/>
-                        <Route path="/contact" element={<ContactPage/>}/>
+
+                        {/*<Route path="/about" element={<AboutPage/>}/>*/}
+                        {/*<Route path="/contact" element={<ContactPage/>}/>*/}
+
                         <Route path="/registerUser" element={<RegisterPage/>}/>
                         <Route path="/loginUser" element={<LoginPage/>}/>
 
