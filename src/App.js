@@ -11,6 +11,7 @@ import ContactPage from "./Pages/Contact/ContactPage";
 import {getToken} from "./Helpers/SessionHelper";
 import ProjectDetailPage from "./Pages/Project/ProjectDetailPage";
 import ProfilePage from "./Pages/Profile/ProfilePage";
+import AlfinPage from "./Pages/Alfin/AlfinPage";
 
 function App() {
     if (getToken()){
@@ -30,6 +31,7 @@ function App() {
                         {/*<Route path="/contact" element={<ContactPage/>}/>*/}
 
                         <Route path="/profile" element={<ProfilePage/>}/>
+                        <Route path="/alfin" element={<AlfinPage/>}/>
 
                         {/* undefined router */}
                         <Route
@@ -63,6 +65,8 @@ function App() {
 
                         <Route path="/registerUser" element={<RegisterPage/>}/>
                         <Route path="/loginUser" element={<LoginPage/>}/>
+
+                        <Route path="/alfin" element={<AlfinPage/>}/>
 
                         {/* undefined router */}
                         <Route

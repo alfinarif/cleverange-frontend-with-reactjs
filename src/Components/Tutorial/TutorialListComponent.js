@@ -83,8 +83,15 @@ const TutorialListComponent = ()=>{
     else{
         return (
             <Fragment>
-                <div className="alert alert-danger" role="alert">
-                    Data out of range...!
+                <div className="container">
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-lg-12 col-md-12 col-sm-12">
+                            <div className="alert alert-danger" role="alert">
+                                <h4>Tutorials</h4>
+                                Data out of range...!
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </Fragment>
         )

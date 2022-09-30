@@ -23,7 +23,6 @@ const LoginSection = ()=>{
             errorToast('Email is not valid')
         }else{
             // here will be login proccess
-
             userLoginAPI(email_address, user_password)
                 .then((result)=>{
                     if(result === true){
@@ -31,6 +30,8 @@ const LoginSection = ()=>{
                     }
                 })
                 .catch((err)=>{
+                    localStorage.removeItem('token')
+                    localStorage.removeItem('userDetails')
                     errorToast('Somthing went wrong')
                 })
 
