@@ -3,6 +3,7 @@ import '../../Assets/css/projectDetail.css';
 import axios from "axios";
 import {errorToast} from "../../Helpers/NotificationHelper";
 import {useParams} from "react-router";
+import OthersProjectComponent from "./OthersProjectComponent";
 
 const ProjectDetailComponent = ()=>{
     const params = useParams();
@@ -95,76 +96,7 @@ const ProjectDetailComponent = ()=>{
 
 
 
-                                <div className="widget widget-latest-post">
-                                    <div className="widget-title">
-                                        <h3>Latest Projects</h3>
-                                    </div>
-                                    <div className="widget-body">
-                                        <div className="latest-post-aside media">
-                                            <div className="lpa-left media-body">
-                                                <div className="lpa-title">
-                                                    <h5><a href="#">Prevent 75% of visitors from google analytics</a></h5>
-                                                </div>
-                                                <div className="lpa-meta">
-                                                    <a className="name" href="#">
-                                                        Rachel Roth
-                                                    </a>
-                                                    <a className="date" href="#">
-                                                        26 FEB 2020
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div className="lpa-right">
-                                                <a href="#">
-                                                    <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title=""
-                                                         alt=""/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div className="latest-post-aside media">
-                                            <div className="lpa-left media-body">
-                                                <div className="lpa-title">
-                                                    <h5><a href="#">Prevent 75% of visitors from google analytics</a></h5>
-                                                </div>
-                                                <div className="lpa-meta">
-                                                    <a className="name" href="#">
-                                                        Rachel Roth
-                                                    </a>
-                                                    <a className="date" href="#">
-                                                        26 FEB 2020
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div className="lpa-right">
-                                                <a href="#">
-                                                    <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title=""
-                                                         alt=""/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div className="latest-post-aside media">
-                                            <div className="lpa-left media-body">
-                                                <div className="lpa-title">
-                                                    <h5><a href="#">Prevent 75% of visitors from google analytics</a></h5>
-                                                </div>
-                                                <div className="lpa-meta">
-                                                    <a className="name" href="#">
-                                                        Rachel Roth
-                                                    </a>
-                                                    <a className="date" href="#">
-                                                        26 FEB 2020
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div className="lpa-right">
-                                                <a href="#">
-                                                    <img src="https://via.placeholder.com/400x200/FFB6C1/000000" title=""
-                                                         alt=""/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <OthersProjectComponent/>
 
 
                             </div>

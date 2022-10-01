@@ -39,6 +39,9 @@
 
 
 /* full screen loader css*/
+.cursor-pointer{
+    cursor: pointer;
+}
 
 
 .plylistTitleStyle{

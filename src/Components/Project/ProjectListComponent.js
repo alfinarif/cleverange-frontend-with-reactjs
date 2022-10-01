@@ -44,7 +44,7 @@ const ProjectListComponent = ()=>{
                                 return(
                                     <div className="card w-100 m-2">
                                         <div className="card-body">
-                                            <Link to=""><h5 className="card-title">{project.title}</h5></Link>
+                                            <h5 onClick={projectDetail.bind(this, project.slug)} className="card-title cursor-pointer">{project.title}</h5>
                                             <p className="card-text">{project.sort_des}</p>
 
                                             <button onClick={projectDetail.bind(this, project.slug)} className="btn btn-primary btn-sm">Details</button>
