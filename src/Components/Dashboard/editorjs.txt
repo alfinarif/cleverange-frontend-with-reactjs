@@ -1,0 +1,15 @@
+return (
+            <>
+                <EditorJs
+                    editorInstance={instance => (this.editorInstance = instance)}
+                    tools={EDITOR_JS_TOOLS}
+                    data={data}
+                />
+
+                <br/>
+                <button onClick={this.onSave.bind(this)} type="button">
+                    Add new project
+                </button>
+
+            </>
+        );

@@ -12,6 +12,7 @@ import {getToken} from "./Helpers/SessionHelper";
 import ProjectDetailPage from "./Pages/Project/ProjectDetailPage";
 import ProfilePage from "./Pages/Profile/ProfilePage";
 import AlfinPage from "./Pages/Alfin/AlfinPage";
+import CreateProjectPage from "./Pages/Dashboard/Project/CreateProjectPage";
 
 function App() {
     if (getToken()){
@@ -32,6 +33,10 @@ function App() {
 
                         <Route path="/profile" element={<ProfilePage/>}/>
                         <Route path="/alfin" element={<AlfinPage/>}/>
+
+                        {/* Dashboard Routing */}
+                        <Route path="/alfin/dashboard/project/create" element={<CreateProjectPage/>}/>
+                        {/* Dashboard Routing */}
 
                         {/* undefined router */}
                         <Route
