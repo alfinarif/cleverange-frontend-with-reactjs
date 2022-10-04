@@ -6,11 +6,47 @@ import EditorJs from "@natterstefan/react-editor-js";
 import { EDITOR_JS_TOOLS } from "../constants";
 import { data } from "../data";
 import OthersProjectComponent from "../../Project/OthersProjectComponent";
+import axios from "axios";
 
 class CreateProjectComponent extends Component {
+
+    getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+
+
+
+
     async onSave() {
         const outputData = await this.editorInstance.save();
-        console.log("outputData", outputData);
+        console.log('response', outputData['blocks'])
+        const csrftoken = this.getCookie('csrftoken');
+        const url = "http://127.0.0.1:8000/project/list/app/test"
+        axios.post(url, outputData['blocks'],{
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            }
+        })
+            .then((res)=>{
+            console.log("response", res.data)
+        })
+            .catch((err)=>{
+                console.log("error", err)
+            })
     }
 
     render() {
