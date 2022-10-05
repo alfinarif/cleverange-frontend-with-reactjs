@@ -39,12 +39,12 @@ const NavigationBar = ()=>{
                                             </li>
                                         </Link>
 
-                                        {/*<Link to="/project">*/}
-                                        {/*    <li className="nav-item rounded">*/}
-                                        {/*    <span className="nav-link active" aria-current="page"><i*/}
-                                        {/*        className="bi bi-house-fill me-2"></i>Projects</span>*/}
-                                        {/*    </li>*/}
-                                        {/*</Link>*/}
+                                        <Link to="/alfin">
+                                            <li className="nav-item rounded">
+                                            <span className="nav-link active" aria-current="page"><i
+                                                className="bi bi-house-fill me-2"></i>About Author</span>
+                                            </li>
+                                        </Link>
                                         {/*<Link to="/about">*/}
                                         {/*    <li className="nav-item rounded">*/}
                                         {/*    <span className="nav-link active" aria-current="page"><i*/}

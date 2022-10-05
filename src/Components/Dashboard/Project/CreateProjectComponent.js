@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import EditorJs from "@natterstefan/react-editor-js";
 
 import { EDITOR_JS_TOOLS } from "../constants";
-import { data } from "../data";
+import { body_editorjs } from "../data";
 import OthersProjectComponent from "../../Project/OthersProjectComponent";
 import axios from "axios";
 
@@ -35,6 +35,7 @@ class CreateProjectComponent extends Component {
         console.log('response', outputData['blocks'])
         const csrftoken = this.getCookie('csrftoken');
         const url = "http://127.0.0.1:8000/project/list/app/test"
+
         axios.post(url, outputData['blocks'],{
             headers: {
                 'Content-Type': 'application/json',
@@ -62,7 +63,7 @@ class CreateProjectComponent extends Component {
                                         <EditorJs
                                             editorInstance={instance => (this.editorInstance = instance)}
                                             tools={EDITOR_JS_TOOLS}
-                                            data={data}
+                                            data={body_editorjs}
                                         />
 
                                         <br/>

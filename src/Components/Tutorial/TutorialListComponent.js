@@ -43,7 +43,7 @@ const TutorialListComponent = ()=>{
                                     return(
                                         <div className="card w-100 m-2">
                                             <div className="card-body">
-                                                <Link to=""><h5 className="card-title">{course.title} | <span className="badge bg-success mx-1 mb-1">{course.type}</span></h5></Link>
+                                                <h5 onClick={tutorialDetail.bind(this, course.slug)} className="card-title titlePointer">{course.title} | <span className="badge bg-success mx-1 mb-1">{course.type}</span></h5>
 
                                                 <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
