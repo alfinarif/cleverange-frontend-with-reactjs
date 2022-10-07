@@ -12,6 +12,10 @@ const NavigationBar = ()=>{
         window.location = '/loginUser'
     }
 
+    const notificationHandler = ()=>{
+        navigate('/profile')
+    }
+
 
 
     if(getToken()){
@@ -75,17 +79,11 @@ const NavigationBar = ()=>{
                                         </li>
 
 
-                                        <li className="nav-item dropdown">
-                                            <a className="nav-link dropdown-toggle text-white" href="#" role="button"
-                                               data-bs-toggle="dropdown" aria-expanded="false">
-                                                Notifications <span className="badge text-bg-danger">4</span>
-                                            </a>
-                                            <ul className="dropdown-menu">
-                                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
+                                        <li className="nav-item rounded titlePointer" onClick={notificationHandler}>
+                                            <span className="nav-link active" aria-current="page"><i
+                                                className="bi bi-house-fill me-2"></i>Notifications <span className="badge text-bg-danger">4</span></span>
                                         </li>
+
 
                                     </ul>
                                 </div>
