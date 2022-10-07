@@ -58,7 +58,6 @@ const NavigationBar = ()=>{
                                         {/*    </li>*/}
                                         {/*</Link>*/}
 
-
                                         <li className="nav-item dropdown rounded">
                                             <a className="text-white nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                                role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
@@ -72,6 +71,19 @@ const NavigationBar = ()=>{
                                                     <hr className="dropdown-divider"/>
                                                 </li>
                                                 <li><a className="dropdown-item" style={{'cursor': 'pointer'}} onClick={logoutUser}>Logout</a></li>
+                                            </ul>
+                                        </li>
+
+
+                                        <li className="nav-item dropdown">
+                                            <a className="nav-link dropdown-toggle text-white" href="#" role="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                Notifications <span className="badge text-bg-danger">4</span>
+                                            </a>
+                                            <ul className="dropdown-menu">
+                                                <li><a className="dropdown-item" href="#">Action</a></li>
+                                                <li><a className="dropdown-item" href="#">Another action</a></li>
+                                                <li><a className="dropdown-item" href="#">Something else here</a></li>
                                             </ul>
                                         </li>
 
