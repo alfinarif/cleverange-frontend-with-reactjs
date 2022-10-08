@@ -1,16 +1,35 @@
 import React,{Fragment, useState, useRef, useEffect} from "react";
 import '../../Assets/css/profile.css';
 import {getUserDetails} from "../../Helpers/SessionHelper";
+import axios from "axios";
+import {errorToast, successToast} from "../../Helpers/NotificationHelper";
 
 
 const ProfileComponent = ()=>{
     let full_name, phone, city, address, image = useRef();
     let [email, setEmail] = useState('');
     let [last_login, setLastLogin] = useState('');
+    let [notifications, setNotifications] = useState([]);
+
+
+    const getCookie =(name)=> {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 
     useEffect(()=>{
         const profile = getUserDetails() // get all user data
-        console.log(profile)
         setEmail(profile['email'])
         setLastLogin(profile['last_login'])
         full_name.value = profile['profile']['full_name']
@@ -18,7 +37,49 @@ const ProfileComponent = ()=>{
         city.value = profile['profile']['city']
         address.value = profile['profile']['address']
 
+        const csrftoken = getCookie('csrftoken');
+        let url = "http://127.0.0.1:8000/notification/all";
+        let emailBody = {
+            email: profile['email']
+        }
+        axios.post(url, emailBody, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            }
+        })
+            .then((res)=>{
+                setNotifications(res.data)
+            })
+            .catch((err)=>{
+                errorToast("Notification API can not called!")
+            })
+
     }, [])
+
+    const seenNotific = (id)=>{
+        const profile = getUserDetails() // get all user data
+        const csrftoken = getCookie('csrftoken');
+        let url = "http://127.0.0.1:8000/notification/seen";
+        let dataBody = {
+            id: id,
+            email: profile['email']
+        }
+        axios.post(url, dataBody, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            }
+        })
+            .then((res)=>{
+                successToast("Notification deleted")
+                window.location = '/profile'
+            })
+            .catch((err)=>{
+                errorToast("Notification API can not called!")
+            })
+
+    }
 
     return(
         <Fragment>
@@ -57,19 +118,20 @@ const ProfileComponent = ()=>{
                                         Notifications
                                     </div>
                                     <div className="card-body">
-                                        <div className="alert alert-success" role="alert">
-                                            A simple success alert—check it out!
-                                        </div>
 
-                                        <div className="alert alert-success" role="alert">
-                                            A simple success alert—check it out!
-                                        </div>
-                                        <div className="alert alert-success" role="alert">
-                                            A simple success alert—check it out!
-                                        </div>
-                                        <div className="alert alert-success" role="alert">
-                                            A simple success alert—check it out!
-                                        </div>
+                                        {
+                                            notifications.map((notification, index)=>{
+                                                console.log('notificaiton', notification)
+                                                return(
+                                                    <div className="alert alert-warning alert-dismissible fade show" role="alert">
+                                                        {notification.message}
+                                                        <button onClick={seenNotific.bind(this, notification.id)} type="button" className="btn-close"></button>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+
+
 
 
                                     </div>
