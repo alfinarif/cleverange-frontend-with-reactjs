@@ -1,10 +1,14 @@
-import React,{Fragment} from 'react';
+import React,{Fragment, useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import logo from '../../Assets/img/cleverange.png';
-import {getToken} from "../../Helpers/SessionHelper";
+import {getToken, getUserDetails} from "../../Helpers/SessionHelper";
+import axios from "axios";
+import {errorToast, successToast} from "../../Helpers/NotificationHelper";
 
 const NavigationBar = ()=>{
     let navigate = useNavigate();
+
+    let [numberOfNotific, setNumberOfNotific] = useState('0')
 
     const logoutUser = ()=>{
         localStorage.removeItem('token')
@@ -12,7 +16,62 @@ const NavigationBar = ()=>{
         window.location = '/loginUser'
     }
 
+    const getCookie =(name)=> {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    useEffect(()=>{
+        const profile = getUserDetails() // get all user data
+        const csrftoken = getCookie('csrftoken');
+        let url = "http://127.0.0.1:8000/notification/count";
+        let dataBody = {
+            email: profile['email']
+        }
+        axios.post(url, dataBody, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            }
+        })
+            .then((res)=>{
+                setNumberOfNotific(res.data.length)
+            })
+            .catch((err)=>{
+                errorToast("Notification API can not called!")
+            })
+    },[])
+
     const notificationHandler = ()=>{
+        const profile = getUserDetails() // get all user data
+        const csrftoken = getCookie('csrftoken');
+        let url = "http://127.0.0.1:8000/notification/seen/all";
+        let dataBody = {
+            email: profile['email']
+        }
+        axios.post(url, dataBody, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            }
+        })
+            .then((res)=>{
+                navigate('/profile')
+            })
+            .catch((err)=>{
+                navigate('/profile')
+            })
         navigate('/profile')
     }
 
@@ -79,9 +138,19 @@ const NavigationBar = ()=>{
                                         </li>
 
 
-                                        <li className="nav-item rounded titlePointer" onClick={notificationHandler}>
-                                            <span className="nav-link active" aria-current="page"><i
-                                                className="bi bi-house-fill me-2"></i>Notifications <span className="badge text-bg-danger">4</span></span>
+                                        <li className="nav-item rounded titlePointer position-relative" onClick={notificationHandler}>
+                                            <span className="position-relative mr-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="22"
+                                                     fill="currentColor" className="bi bi-bell text-white mt-2 mr-1" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                                                </svg>
+                                                <span
+                                                    className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2">
+                                                {numberOfNotific}
+                                                </span>
+                                            </span>
+
                                         </li>
 
 
@@ -128,7 +197,7 @@ const NavigationBar = ()=>{
                                         <Link to="/about">
                                             <li className="nav-item rounded">
                                             <span className="nav-link active" aria-current="page"><i
-                                                className="bi bi-house-fill me-2"></i>About</span>
+                                                className="bi bi-house-fill me-2"></i>About Author</span>
                                             </li>
                                         </Link>
                                         <Link to="/contact">
