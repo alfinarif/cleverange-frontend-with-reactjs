@@ -2,11 +2,13 @@ import React, {Fragment, useState, useEffect} from 'react';
 import axios from "axios";
 import {errorToast} from "../../Helpers/NotificationHelper";
 import {Link, useNavigate} from "react-router-dom";
+import itemImage from "../../Assets/img/item.jpg";
 
 
 const TutorialListComponent = ()=>{
     let navigate = useNavigate();
     let [courses, setCourse] = useState([]);
+    let [courseDetail, setCourseDetail] = useState('');
 
     useEffect(()=>{
         let url = "http://127.0.0.1:8000/course/list/courses"
@@ -24,6 +26,10 @@ const TutorialListComponent = ()=>{
 
     const tutorialDetail = (slug)=>{
         navigate('/tutorial/'+slug)
+    }
+
+    const ShowDetails = (title)=>{
+        setCourseDetail(title)
     }
 
     if(courses.length >0){
@@ -64,7 +70,10 @@ const TutorialListComponent = ()=>{
                                                 <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
                                                 <span className="mb-2">{course.created}</span><br/>
-                                                <button className="btn btn-primary btn-sm">Join Now</button>
+                                                <button onClick={ShowDetails.bind(this, course.title)} data-bs-toggle="modal"
+                                                        data-bs-target="#projectDetailModal"
+                                                        className="btn btn-primary btn-sm">Join Now
+                                                </button>
                                             </div>
                                         </div>
                                     )
@@ -77,6 +86,68 @@ const TutorialListComponent = ()=>{
 
                     </div>
                 </div>
+
+
+                {/* <!-- Modal --> */}
+                <div class="modal fade" id="projectDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog w-150">
+                        <div class="modal-content w-100">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{courseDetail}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div className='container-fluid'>
+                                    <div className='row d-flex justify-content-center'>
+                                        <div className='col-lg-12 col-md-12 col-sm-12'>
+                                            <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--rAk2-3Xf--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://thepracticaldev.s3.amazonaws.com/i/gz5xantp1vycu7ueleh4.jpg" class="card-img-top img-fluid rounded" alt="project-img"/>
+
+                                            <div className='mt-4 text-justify text-wrap'>
+                                                <p>আপনি শুরু করার আগে আমাকে এই কোর্স সম্পর্কে আপনাকে ব্যাখ্যা করতে দিন।
+                                                    হাই আলফিন এখানে, আমরা পাইথনের মৌলিক বিষয়গুলি শিখতে যাচ্ছি যা ফ্রেমওয়ার্ক বোঝা বা শেখার জন্য খুবই গুরুত্বপূর্ণ,
+                                                    যদি মৌলিক ধারণাটি পরিষ্কার না হয় তবে কাঠামো আরও কঠিন হবে,
+                                                    তাই আমরা ভিক্ষা থেকে শুরু করতে যাচ্ছি</p>
+                                            </div>
+
+                                            <div>
+                                                <table className='table shadow-sm my-2'>
+                                                    <thead className='bg-success'>
+                                                    <tr>
+                                                        <th className='text-white'>What technology used on</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>Html5</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Css3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Bootstrap</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ReactJs</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/* <!-- Modal --> */}
+
+
             </Fragment>
         )
     }
