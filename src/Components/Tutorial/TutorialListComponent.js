@@ -28,8 +28,12 @@ const TutorialListComponent = ()=>{
         navigate('/tutorial/'+slug)
     }
 
-    const ShowDetails = (title)=>{
-        setCourseDetail(title)
+    const ShowDetails = (slug)=>{
+        setCourseDetail(slug)
+    }
+
+    const redirectToPayment = (slug)=>{
+        window.location = '/course/'+slug+'/payment';
     }
 
     if(courses.length >0){
@@ -70,7 +74,7 @@ const TutorialListComponent = ()=>{
                                                 <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
                                                 <span className="mb-2">{course.created}</span><br/>
-                                                <button onClick={ShowDetails.bind(this, course.title)} data-bs-toggle="modal"
+                                                <button onClick={ShowDetails.bind(this, course.slug)} data-bs-toggle="modal"
                                                         data-bs-target="#projectDetailModal"
                                                         className="btn btn-primary btn-sm">Join Now
                                                 </button>
@@ -112,7 +116,7 @@ const TutorialListComponent = ()=>{
 
                                             <div>
                                                 <table className='table shadow-sm my-2'>
-                                                    <thead className='bg-success'>
+                                                    <thead className='bg-info'>
                                                     <tr>
                                                         <th className='text-white'>What technology used on</th>
                                                     </tr>
@@ -134,6 +138,7 @@ const TutorialListComponent = ()=>{
                                                 </table>
                                             </div>
 
+                                                <button onClick={redirectToPayment.bind(this, courseDetail)} className="btn btn-success w-100">Go For Payment</button>
 
                                         </div>
                                     </div>

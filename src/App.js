@@ -12,6 +12,7 @@ import {getToken} from "./Helpers/SessionHelper";
 import ProjectDetailPage from "./Pages/Project/ProjectDetailPage";
 import ProfilePage from "./Pages/Profile/ProfilePage";
 import AlfinPage from "./Pages/Alfin/AlfinPage";
+import PaymentPage from "./Pages/payment/PaymentPage";
 
 function App() {
     if (getToken()){
@@ -32,6 +33,9 @@ function App() {
 
                         <Route path="/profile" element={<ProfilePage/>}/>
                         <Route path="/alfin" element={<AlfinPage/>}/>
+
+                        {/* payment router */}
+                        <Route path="/course/:slug/payment" element={<PaymentPage/>}/>
 
                         {/* undefined router */}
                         <Route

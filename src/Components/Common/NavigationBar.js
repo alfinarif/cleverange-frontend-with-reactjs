@@ -33,46 +33,52 @@ const NavigationBar = ()=>{
     }
 
     useEffect(()=>{
-        const profile = getUserDetails() // get all user data
-        const csrftoken = getCookie('csrftoken');
-        let url = "http://127.0.0.1:8000/notification/count";
-        let dataBody = {
-            email: profile['email']
-        }
-        axios.post(url, dataBody, {
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
+        if(getUserDetails()){
+            const profile = getUserDetails() // get all user data
+            const csrftoken = getCookie('csrftoken');
+            let url = "http://127.0.0.1:8000/notification/count";
+            let dataBody = {
+                email: profile['email']
             }
-        })
-            .then((res)=>{
-                setNumberOfNotific(res.data.length)
+            axios.post(url, dataBody, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                }
             })
-            .catch((err)=>{
-                errorToast("Notification API can not called!")
-            })
+                .then((res)=>{
+                    setNumberOfNotific(res.data.length)
+                })
+                .catch((err)=>{
+                    errorToast("Notification API can not called!")
+                })
+        }else{
+            setNumberOfNotific(0)
+        }
     },[])
 
     const notificationHandler = ()=>{
-        const profile = getUserDetails() // get all user data
-        const csrftoken = getCookie('csrftoken');
-        let url = "http://127.0.0.1:8000/notification/seen/all";
-        let dataBody = {
-            email: profile['email']
-        }
-        axios.post(url, dataBody, {
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
+        if(getUserDetails()){
+            const profile = getUserDetails() // get all user data
+            const csrftoken = getCookie('csrftoken');
+            let url = "http://127.0.0.1:8000/notification/seen/all";
+            let dataBody = {
+                email: profile['email']
             }
-        })
-            .then((res)=>{
-                navigate('/profile')
+            axios.post(url, dataBody, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                }
             })
-            .catch((err)=>{
-                navigate('/profile')
-            })
-        navigate('/profile')
+                .then((res)=>{
+                    navigate('/profile')
+                })
+                .catch((err)=>{
+                    navigate('/profile')
+                })
+            navigate('/profile')
+        }
     }
 
 
