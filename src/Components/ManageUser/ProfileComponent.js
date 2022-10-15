@@ -121,7 +121,6 @@ const ProfileComponent = ()=>{
 
                                         {
                                             notifications.map((notification, index)=>{
-                                                console.log('notificaiton', notification)
                                                 return(
                                                     <div className="alert alert-warning alert-dismissible fade show text-wrap" role="alert">
                                                         {notification.message}

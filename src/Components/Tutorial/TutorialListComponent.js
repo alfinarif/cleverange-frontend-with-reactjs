@@ -3,6 +3,7 @@ import axios from "axios";
 import {errorToast} from "../../Helpers/NotificationHelper";
 import {Link, useNavigate} from "react-router-dom";
 import itemImage from "../../Assets/img/item.jpg";
+import PaymentComponent from "../../payment/PaymentComponent";
 
 
 const TutorialListComponent = ()=>{
@@ -28,12 +29,13 @@ const TutorialListComponent = ()=>{
         navigate('/tutorial/'+slug)
     }
 
-    const ShowDetails = (slug)=>{
-        setCourseDetail(slug)
+    const ShowDetails = (course)=>{
+        setCourseDetail(course)
     }
 
-    const redirectToPayment = (slug)=>{
-        window.location = '/course/'+slug+'/payment';
+    const redirectToPayment = (course)=>{
+        localStorage.setItem('course_id', course.id)
+        window.location = '/course/'+course.slug+'/payment';
     }
 
     if(courses.length >0){
@@ -74,7 +76,7 @@ const TutorialListComponent = ()=>{
                                                 <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
                                                 <span className="mb-2">{course.created}</span><br/>
-                                                <button onClick={ShowDetails.bind(this, course.slug)} data-bs-toggle="modal"
+                                                <button onClick={ShowDetails.bind(this, course)} data-bs-toggle="modal"
                                                         data-bs-target="#projectDetailModal"
                                                         className="btn btn-primary btn-sm">Join Now
                                                 </button>
@@ -97,7 +99,7 @@ const TutorialListComponent = ()=>{
                     <div class="modal-dialog w-150">
                         <div class="modal-content w-100">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">{courseDetail}</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">{courseDetail.title}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">

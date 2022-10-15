@@ -22,16 +22,17 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
 
-                        {/*<Route path="/project" element={<ProjectPage/>}/>*/}
-
                         <Route path="/project/:slug" element={<ProjectDetailPage/>}/>
                         <Route path="/tutorial" element={<TutorialPage/>}/>
                         <Route path="/tutorial/:slug" element={<TutorialPage/>}/>
 
-                        {/*<Route path="/about" element={<AboutPage/>}/>*/}
-                        {/*<Route path="/contact" element={<ContactPage/>}/>*/}
+                        <Route path="/registerUser" element={<Navigate to="/profile" replace />}/>
+                        <Route path="/loginUser" element={<Navigate to="/profile" replace />}/>
+
 
                         <Route path="/profile" element={<ProfilePage/>}/>
+                        <Route path="/profile/myCourses" element={<ProjectPage/>}/>
+
                         <Route path="/alfin" element={<AlfinPage/>}/>
 
                         {/* payment router */}

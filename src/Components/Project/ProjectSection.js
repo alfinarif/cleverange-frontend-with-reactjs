@@ -17,11 +17,12 @@ const ProjectSection = ()=>{
     return(
         <Fragment>
 
-            <div class="container-fluid mt-3 p-3">
-                <div class="row d-flex justify-content-center">
-                    <div class="my-2 text-center">
-                    <h3 class="fw-bold text-success">Completed Projects</h3>
-                    <hr/>
+            <div class="container mt-3 p-3">
+                <div class="row d-flex justify-content-start">
+                    <div class="my-2 text-start">
+                    <h3 class="fw-bold text-success">My Courses</h3>
+                        <hr style={{width:"120px"}}/>
+                        <hr style={{width:"90px"}}/>
                     </div>
 
                     <div class="col-lg-3 col-md-3 col-sm-12 shadow rounded my-2 p-2">
@@ -42,59 +43,7 @@ const ProjectSection = ()=>{
                     </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-3 col-sm-12 shadow rounded my-2 p-2">
-                    <div class="card">
-                        <div class="card-header">
-                        <div class="text-center">
-                            <img src="https://www.w3schools.com/css/rock600x400.jpg" class="rounded img-thumbnail"/>
-                        </div>
-                        </div>
 
-                        <div class="card-body">
-                        <h4 class="text-success">Authentication app with Django</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum, eligendi ab.</p>
-                        </div>
-                        <div class="card-footer">
-                        <button class="w-100 btn btn-success">More Info</button>
-                        </div>
-                    </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-12 shadow rounded my-2 p-2">
-                    <div class="card">
-                        <div class="card-header">
-                        <div class="text-center">
-                            <img src="https://www.w3schools.com/css/rock600x400.jpg" class="rounded img-thumbnail"/>
-                        </div>
-                        </div>
-
-                        <div class="card-body">
-                        <h4 class="text-success">Authentication app with Django</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum, eligendi ab.</p>
-                        </div>
-                        <div class="card-footer">
-                        <button class="w-100 btn btn-success">More Info</button>
-                        </div>
-                    </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-12 shadow rounded my-2 p-2">
-                    <div class="card">
-                        <div class="card-header">
-                        <div class="text-center">
-                            <img src="https://www.w3schools.com/css/rock600x400.jpg" class="rounded img-thumbnail"/>
-                        </div>
-                        </div>
-
-                        <div class="card-body">
-                        <h4 class="text-success">Authentication app with Django</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum, eligendi ab.</p>
-                        </div>
-                        <div class="card-footer">
-                        <button class="w-100 btn btn-success">More Info</button>
-                        </div>
-                    </div>
-                    </div>
                     
                     
                 

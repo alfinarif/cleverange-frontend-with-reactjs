@@ -135,6 +135,7 @@ const NavigationBar = ()=>{
                                                 aria-labelledby="navbarDropdown">
 
                                                 <Link to="/profile"><li><a className="dropdown-item" href="#">Settings</a></li></Link>
+                                                <Link to="/profile/myCourses"><li><a className="dropdown-item" href="#">My Courses</a></li></Link>
 
                                                 <li>
                                                     <hr className="dropdown-divider"/>
